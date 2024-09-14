@@ -127,7 +127,7 @@ public class Formulario extends javax.swing.JFrame {
     public void pvTotal(){
         String p = pv_inicialTXT.getText();
         if(p.equals("")){
-            rendicion_pvTXT.setText("0");
+            rendicion_pvTXT.setText(String.valueOf(0));
             dev = 0;
         }
         else{
