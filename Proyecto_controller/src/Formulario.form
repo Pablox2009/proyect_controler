@@ -12,7 +12,8 @@
     </Component>
   </NonVisualComponents>
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -50,19 +51,20 @@
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jPanel4" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="panel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane4" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                              <Component id="jScrollPane3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="panel2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jScrollPane4" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                          <Component id="jScrollPane3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -125,12 +127,12 @@
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="jScrollPane1" min="-2" pref="170" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                       <Component id="panel1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jPanel5" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -140,14 +142,14 @@
                   <Component id="jScrollPane3" min="-2" pref="184" max="-2" attributes="0"/>
                   <Component id="jScrollPane4" min="-2" pref="184" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="panel2" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="panel2" min="-2" max="-2" attributes="0"/>
                   <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="total_realTXT" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -160,7 +162,7 @@
                   </Group>
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -566,7 +568,7 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="12" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="devolucion_totalTXT" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -617,55 +619,42 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                          <Component id="jLabel10" min="-2" pref="101" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-                          <Component id="jLabel11" min="-2" pref="43" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="rendicion_totalTXT" min="-2" pref="100" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                          <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="rendicion_pvTXT" min="-2" pref="100" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace pref="122" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jLabel10" min="-2" pref="101" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                  <Component id="jLabel11" min="-2" pref="43" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="rendicion_totalTXT" min="-2" pref="100" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                  <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="rendicion_pvTXT" min="-2" pref="100" max="-2" attributes="0"/>
+                  <EmptySpace pref="62" max="32767" attributes="0"/>
+                  <Component id="boton_guardar" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="boton_salir" min="-2" pref="72" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="boton_guardar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="boton_salir" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="rendicion_pvTXT" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="rendicion_totalTXT" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="rendicion_totalTXT" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="rendicion_pvTXT" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                          <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace pref="21" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -690,15 +679,18 @@
         </Component>
         <Component class="javax.swing.JTextField" name="rendicion_pvTXT">
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="boton_guardar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="ff" red="33" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Guardar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton_guardarActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="boton_salir">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="ff" type="rgb"/>
@@ -708,6 +700,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Salir"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton_salirActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

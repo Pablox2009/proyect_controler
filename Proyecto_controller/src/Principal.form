@@ -25,6 +25,11 @@
         <Property name="text" type="java.lang.String" value="Semana: "/>
       </Properties>
     </Component>
+    <Component class="javax.swing.JMenuItem" name="jMenuItem4">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jMenuItem4"/>
+      </Properties>
+    </Component>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jMenu1">
@@ -88,11 +93,27 @@
             </MenuItem>
           </SubComponents>
         </Menu>
+        <Menu class="javax.swing.JMenu" name="jMenu8">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Clientes"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="item_agregar_cliente">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Gestionar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="item_agregar_clienteActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
       </SubComponents>
     </Menu>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>
@@ -116,32 +137,30 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="553" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jTextField4" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
-                              <Component id="jTextField2" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField5" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="jTextField4" max="32767" attributes="0"/>
+                          <Component id="jTextField2" min="-2" pref="80" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jTextField3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField6" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jTextField1" pref="80" max="32767" attributes="0"/>
+                          <Component id="jTextField5" max="32767" attributes="0"/>
                       </Group>
+                      <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jTextField6" pref="80" max="32767" attributes="0"/>
+                          <Component id="jTextField3" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="61" max="32767" attributes="0"/>
@@ -180,8 +199,8 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -228,49 +247,31 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField2ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField3">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField3ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField4">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField4ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField5">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField5ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField6">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField6ActionPerformed"/>
       </Events>

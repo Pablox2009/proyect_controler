@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 
 public class conexion {
     public static Connection conectar(){
-        String baseDeDatos = "";
+        String baseDeDatos = "controler";
         String usuario = "root";
         String password = "";
         String host = "localhost";

@@ -31,6 +31,7 @@ public class Dias extends javax.swing.JFrame {
         sig = new java.awt.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setText("Semanas: ");
 
