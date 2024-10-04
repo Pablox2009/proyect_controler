@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -302,21 +305,34 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField6ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-       Dias a = new Dias();
+        int res = JOptionPane.showConfirmDialog(null,"Esta por ingresar un nuevo dia. ¿Desea continuar?","Advertencia", JOptionPane.YES_NO_OPTION);
+        if(res==JOptionPane.YES_OPTION){
+        Dias a = new Dias();
        a.setVisible(true);
+       dispose();
+        }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+       int res = JOptionPane.showConfirmDialog(null,"Esta por ingresar una nueva semana. ¿Desea continuar?","Advertencia", JOptionPane.YES_NO_OPTION);
+       if(res==JOptionPane.YES_OPTION){
         Formulario a = new Formulario();
         a.setVisible(true);
         dispose();
+       }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void MesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MesActionPerformed
         // TODO add your handling code here:
+        // Mostrar el cuadro de diálogo con dos opciones
+    int respuesta = JOptionPane.showConfirmDialog(null, "Está por ingresar un nuevo mes. ¿Desea continuar?", "Advertencia", JOptionPane.YES_NO_OPTION);
+    
+    // Si el usuario elige "Sí" (YES_OPTION), continúa con la acción
+    if (respuesta == JOptionPane.YES_OPTION) {
         mes a = new mes();
         a.setVisible(true);
-        dispose();
+        dispose(); // Cierra la ventana actual
+    }
     }//GEN-LAST:event_MesActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
