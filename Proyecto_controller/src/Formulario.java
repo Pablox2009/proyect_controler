@@ -1,5 +1,9 @@
 
 import codigo.fomularioCode;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -33,6 +37,8 @@ public class Formulario extends javax.swing.JFrame {
     public Formulario() {
         initComponents();
         textos();
+        fecha();
+        centrar();
         rendicion_pvTXT.setText(String.valueOf(puntos_venta));
         total_realTXT.setText(String.format("%.2f", tr));
         diferenciaTXT.setText(String.format("%.2f", dif));
@@ -128,6 +134,13 @@ public class Formulario extends javax.swing.JFrame {
         });
     }
     
+    public void fecha(){
+        Date fechas = new Date();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        total_inicialTXT.setText(df.format(fechas));
+        total_inicialTXT.setEditable(false);
+    }
+    
     public void pvTotal(){
         String p = pv_inicialTXT.getText();
         if(p.equals("")){
@@ -205,6 +218,13 @@ public class Formulario extends javax.swing.JFrame {
     
     public void cargarClientes() {
         fc.clientes(codigoc);
+    }
+    
+    private void centrar(){
+        Dimension tamaño = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (tamaño.width - this.getWidth()) / 2;
+        int y = (tamaño.height - this.getHeight()) / 2;
+        this.setLocation(x, y);
     }
     
     public void textos(){
