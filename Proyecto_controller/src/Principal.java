@@ -1,7 +1,13 @@
 
 import javax.swing.JOptionPane;
 import codigo.Rellenar;
-
+import Conexion.conexion;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.table.DefaultTableModel;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -15,14 +21,65 @@ import codigo.Rellenar;
 public class Principal extends javax.swing.JFrame {
 
     //private Cliente_formulario cf;
+      conexion con = new conexion();
+     Connection conect;
     int cambio;
     Rellenar a = new Rellenar();
     public Principal() {
         initComponents();
-        a.rellenar("meses","nombre_mes", mes);
-        a.rellenar("semanas","numero_semana", semana);
+        this.conect = con.conectar();
+        a.rellenar("mes","mes", mes);
+        a.rellenar("semana","semana", semana);
+        tabla();
     }
 
+    
+
+public void tabla() {
+    // Definir las columnas de la tabla
+    String[] columnNames = {"Semana", "Días", "Puntos de Venta", "Total Inicial"};
+    DefaultTableModel model = new DefaultTableModel(columnNames, 0); // Modelo para la tabla
+
+    // Consulta SQL
+    String query = "SELECT r.semana, COUNT(DISTINCT r.fecha) AS dias, " +
+                   "SUM(r.puntos_venta_inicial) AS puntos_venta, " +
+                   "SUM(r.total_inicial) AS total_inicial " +
+                   "FROM registro r " +
+                   "LEFT JOIN semanas s ON r.semana = s.numero_semana " +
+                   "GROUP BY r.semana " + // Agrupamos solo por semana
+                   "ORDER BY r.semana";
+
+    try {
+        Statement stmt = conect.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+
+        // Limpiar el modelo existente antes de agregar nuevas filas
+        model.setRowCount(0);
+
+        while (rs.next()) {
+            String semana = rs.getString("semana");
+            int dias = rs.getInt("dias");
+            int puntosVenta = rs.getInt("puntos_venta");
+            float totalInicial = rs.getFloat("total_inicial");
+
+            // Agregar fila al modelo
+            model.addRow(new Object[]{semana, dias, puntosVenta, totalInicial});
+        }
+
+        // Asignar el modelo a la tabla llamada 'datos'
+        Datos.setModel(model); // Asegúrate de que 'datos' sea el nombre correcto del JTable
+
+        // Opcional: Ajustar tamaño de columnas
+        Datos.getColumnModel().getColumn(0).setPreferredWidth(100); // Semana
+        Datos.getColumnModel().getColumn(1).setPreferredWidth(50);  // Días
+        Datos.getColumnModel().getColumn(2).setPreferredWidth(100); // Puntos de Venta
+        Datos.getColumnModel().getColumn(3).setPreferredWidth(100); // Total Inicial
+
+    } catch (SQLException e) {
+        e.printStackTrace(); // Manejo de errores
+    }
+}
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,7 +95,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jMenuItem4 = new javax.swing.JMenuItem();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Datos = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -79,7 +136,7 @@ public class Principal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Datos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -90,7 +147,7 @@ public class Principal extends javax.swing.JFrame {
                 "Semanas", "Puntos de Venta", "Cantidad de dias ", "Total"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(Datos);
 
         jLabel1.setText("Total general:");
 
@@ -145,6 +202,11 @@ public class Principal extends javax.swing.JFrame {
         jLabel6.setText("Semana:");
 
         jButton1.setText("Aplicar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("Nuevo");
 
@@ -352,6 +414,69 @@ public class Principal extends javax.swing.JFrame {
         cf.setVisible(true);
     }//GEN-LAST:event_item_agregar_clienteActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+         String mesSeleccionado = mes.getSelectedItem().toString();
+    String semanaSeleccionada = semana.getSelectedItem().toString();
+     System.out.println("Mes seleccionado: " + mesSeleccionado);
+    System.out.println("Semana seleccionada: " + semanaSeleccionada);
+    // Llamar al método para llenar la tabla con los datos filtrados
+    llenarTablaFiltrada(mesSeleccionado, semanaSeleccionada);
+    }//GEN-LAST:event_jButton1ActionPerformed
+public void llenarTablaFiltrada(String mes, String semana) {
+    // Definir las columnas de la tabla
+    String[] columnNames = {"Semana", "Días", "Puntos de Venta", "Total Inicial"};
+    DefaultTableModel model = new DefaultTableModel(columnNames, 0); // Modelo para la tabla
+
+    // Consulta SQL para filtrar por mes y semana
+    String query = "SELECT r.semana, COUNT(DISTINCT r.fecha) AS dias, " +
+                   "SUM(r.puntos_venta_inicial) AS puntos_venta, " +
+                   "SUM(r.total_inicial) AS total_inicial " +
+                   "FROM registro r " +
+                   "LEFT JOIN semanas s ON r.semana = s.numero_semana " +
+                   "WHERE s.mes = ? AND r.semana = ? " + // Filtramos por mes y semana
+                   "GROUP BY r.semana " +
+                   "ORDER BY r.semana";
+
+    try {
+        PreparedStatement pstmt = conect.prepareStatement(query);
+        pstmt.setString(1, mes); // Establecer el mes seleccionado
+        pstmt.setString(2, semana); // Establecer la semana seleccionada
+        
+        ResultSet rs = pstmt.executeQuery();
+
+        // Limpiar el modelo existente antes de agregar nuevas filas
+        model.setRowCount(0);
+
+        // Verificar si hay resultados
+        if (!rs.isBeforeFirst()) { // Verifica si el ResultSet está vacío
+            model.addRow(new Object[]{"No se encuentran datos", "", "", ""}); // Agrega el mensaje
+        } else {
+            while (rs.next()) {
+                String semanaNombre = rs.getString("semana");
+                int dias = rs.getInt("dias");
+                int puntosVenta = rs.getInt("puntos_venta");
+                float totalInicial = rs.getFloat("total_inicial");
+
+                // Agregar fila al modelo
+                model.addRow(new Object[]{semanaNombre, dias, puntosVenta, totalInicial});
+            }
+        }
+
+        // Asignar el modelo a la tabla llamada 'datos'
+        Datos.setModel(model); // Asegúrate de que 'datos' sea el nombre correcto del JTable
+
+        // Opcional: Ajustar tamaño de columnas
+        Datos.getColumnModel().getColumn(0).setPreferredWidth(100); // Semana
+        Datos.getColumnModel().getColumn(1).setPreferredWidth(50);  // Días
+        Datos.getColumnModel().getColumn(2).setPreferredWidth(100); // Puntos de Venta
+        Datos.getColumnModel().getColumn(3).setPreferredWidth(100); // Total Inicial
+
+    } catch (SQLException e) {
+        e.printStackTrace(); // Manejo de errores
+    }
+}
+
     /**
      * @param args the command line arguments
      */
@@ -388,6 +513,7 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable Datos;
     private javax.swing.JMenuItem Mes;
     private javax.swing.JMenuItem item_agregar_cliente;
     private javax.swing.JButton jButton1;
@@ -412,7 +538,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;

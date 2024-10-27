@@ -17,7 +17,7 @@ public class Dias extends javax.swing.JFrame {
     Rellenar a= new Rellenar();
     public Dias() {
         initComponents();
-        a.rellenar("semanas","numero_semana", semanas);
+        a.rellenar("semana","semana", semanas);
     }
 
     /**
