@@ -16,7 +16,7 @@ public class mes extends javax.swing.JFrame {
           Rellenar re= new Rellenar();
     public mes() {
         initComponents();
-         re.rellenar("meses", "nombre_mes", meses);
+         re.rellenar("mes", "mes", meses);
     }
 
     /**

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-10-2024 a las 14:42:31
+-- Tiempo de generación: 27-10-2024 a las 19:36:34
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -50,31 +50,50 @@ INSERT INTO `cliente` (`id`, `codigo`, `nombre`, `borrado`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `mes`
+--
+
+CREATE TABLE `mes` (
+  `mes` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `mes`
+--
+
+INSERT INTO `mes` (`mes`) VALUES
+('Abril'),
+('Agosto'),
+('Diciembre '),
+('Enero'),
+('Febrero'),
+('Julio'),
+('Junio'),
+('Marzo'),
+('Mayo'),
+('Noviembre'),
+('Octubre'),
+('Septiembre ');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `meses`
 --
 
 CREATE TABLE `meses` (
   `id_mes` int(11) NOT NULL,
-  `nombre_mes` varchar(20) NOT NULL
+  `nombre_mes` varchar(20) DEFAULT NULL,
+  `Objetivo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `meses`
 --
 
-INSERT INTO `meses` (`id_mes`, `nombre_mes`) VALUES
-(1, 'Enero'),
-(2, 'Febrero'),
-(3, 'Marzo'),
-(4, 'Abril'),
-(5, 'Mayo'),
-(6, 'Junio'),
-(7, 'Julio'),
-(8, 'Agosto'),
-(9, 'Septiembre'),
-(10, 'Octubre'),
-(11, 'Noviembre'),
-(12, 'Diciembre');
+INSERT INTO `meses` (`id_mes`, `nombre_mes`, `Objetivo`) VALUES
+(29, 'Abril', 1),
+(30, 'Abril', 1);
 
 -- --------------------------------------------------------
 
@@ -84,7 +103,7 @@ INSERT INTO `meses` (`id_mes`, `nombre_mes`) VALUES
 
 CREATE TABLE `registro` (
   `id` int(11) NOT NULL,
-  `semana` varchar(20) NOT NULL,
+  `semana` varchar(20) DEFAULT NULL,
   `fecha` date NOT NULL,
   `zona` varchar(300) NOT NULL,
   `total_inicial` float NOT NULL,
@@ -112,6 +131,37 @@ CREATE TABLE `registro` (
   `devolucion` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `registro`
+--
+
+INSERT INTO `registro` (`id`, `semana`, `fecha`, `zona`, `total_inicial`, `puntos_venta_inicial`, `clientes_fiado`, `fiado_saldo`, `fiado_estado`, `fiado_total`, `rendicion_efectivo`, `rendicion_transferencia`, `cobranza`, `gastos`, `rendicion_total`, `devolucion_cliente`, `devolucion_saldo`, `devolucion_total`, `pd_cantidad`, `pd_nombre`, `pd_precio_uni`, `pd_saldo`, `pd_total`, `total_real`, `tr_total`, `puntos_venta_final`, `devolucion`) VALUES
+(3, 'semana 1', '2024-10-01', 'san pedro ', 1000, 12, 12, 1000, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 'luis', 12, 12, 12, 12, 12, 12, 12),
+(4, 'semana 2', '2024-10-09', 'as', 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 21, 'as', 12, 12, 2, 12, 12, 12, 12),
+(5, 'semana 4 ', '2024-10-23', 'as', 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 'a', 12, 12, 12, 12, 12, 12, 12),
+(6, 'semana 1', '2024-10-10', 'ds', 12, 32, 34, 45, 45, 45, 54, 56, 65, 56, 53, 45, 345, 345, 435, 'sd', 345, 5435, 3453450, 535, 355, 35, 345);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `semana`
+--
+
+CREATE TABLE `semana` (
+  `semana` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `semana`
+--
+
+INSERT INTO `semana` (`semana`) VALUES
+('semana 1'),
+('semana 2'),
+('semana 3 '),
+('semana 4 '),
+('semana 5 ');
+
 -- --------------------------------------------------------
 
 --
@@ -120,20 +170,19 @@ CREATE TABLE `registro` (
 
 CREATE TABLE `semanas` (
   `id_semana` int(11) NOT NULL,
-  `numero_semana` varchar(20) NOT NULL,
-  `id_mes` int(11) DEFAULT NULL
+  `numero_semana` varchar(20) DEFAULT NULL,
+  `mes` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `semanas`
 --
 
-INSERT INTO `semanas` (`id_semana`, `numero_semana`, `id_mes`) VALUES
-(1, 'Semana 1', NULL),
-(2, 'Semana 2 ', NULL),
-(3, 'Semana 3 ', NULL),
-(4, 'Semana 4 ', NULL),
-(5, 'Semana 5 ', NULL);
+INSERT INTO `semanas` (`id_semana`, `numero_semana`, `mes`) VALUES
+(26, 'semana 1', 'Abril'),
+(27, 'semana 1', 'Abril'),
+(28, 'semana 2', 'Febrero'),
+(29, 'semana 4 ', 'Julio');
 
 --
 -- Índices para tablas volcadas
@@ -146,23 +195,38 @@ ALTER TABLE `cliente`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `mes`
+--
+ALTER TABLE `mes`
+  ADD PRIMARY KEY (`mes`);
+
+--
 -- Indices de la tabla `meses`
 --
 ALTER TABLE `meses`
-  ADD PRIMARY KEY (`id_mes`);
+  ADD PRIMARY KEY (`id_mes`),
+  ADD KEY `nombre_mes` (`nombre_mes`);
 
 --
 -- Indices de la tabla `registro`
 --
 ALTER TABLE `registro`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `semana` (`semana`);
+
+--
+-- Indices de la tabla `semana`
+--
+ALTER TABLE `semana`
+  ADD PRIMARY KEY (`semana`);
 
 --
 -- Indices de la tabla `semanas`
 --
 ALTER TABLE `semanas`
   ADD PRIMARY KEY (`id_semana`),
-  ADD KEY `id_mes` (`id_mes`);
+  ADD KEY `fk_numero_semana` (`numero_semana`),
+  ADD KEY `id_mes` (`mes`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -178,29 +242,42 @@ ALTER TABLE `cliente`
 -- AUTO_INCREMENT de la tabla `meses`
 --
 ALTER TABLE `meses`
-  MODIFY `id_mes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_mes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de la tabla `registro`
 --
 ALTER TABLE `registro`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `semanas`
 --
 ALTER TABLE `semanas`
-  MODIFY `id_semana` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_semana` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
+-- Filtros para la tabla `meses`
+--
+ALTER TABLE `meses`
+  ADD CONSTRAINT `meses_ibfk_1` FOREIGN KEY (`nombre_mes`) REFERENCES `mes` (`mes`);
+
+--
+-- Filtros para la tabla `registro`
+--
+ALTER TABLE `registro`
+  ADD CONSTRAINT `registro_ibfk_1` FOREIGN KEY (`semana`) REFERENCES `semana` (`semana`);
+
+--
 -- Filtros para la tabla `semanas`
 --
 ALTER TABLE `semanas`
-  ADD CONSTRAINT `semanas_ibfk_1` FOREIGN KEY (`id_mes`) REFERENCES `meses` (`id_mes`);
+  ADD CONSTRAINT `fk_numero_semana` FOREIGN KEY (`numero_semana`) REFERENCES `semana` (`semana`),
+  ADD CONSTRAINT `semanas_ibfk_1` FOREIGN KEY (`mes`) REFERENCES `mes` (`mes`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
