@@ -3,9 +3,10 @@ import codigo.fomularioCode;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
@@ -23,6 +24,18 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Formulario extends javax.swing.JFrame {
     
+    String fechaF, zonaF, total_inicialF, puntos_inicial;
+    
+    List<String>clientesFiado; List<String>clientesSaldo; List<String>clientesEstado; String fiado_totalF;
+    
+    String rendicion_efectivoF, rendicion_transferenciaF, cobranzaF, gastosF, rendicion_totalF;
+    
+    List<String> devolucionCliente; List<String> devolucionSaldo; String devolucion_totalF;
+    
+    List<String> pdCantidad; List<String> pdNombre; List<String> pdPrecioUni; List<String> pdSaldo; String pd_totalF;
+    
+    String total_realF, puntos_venta_finalF, tr_totalF, devolucionF;
+    
     int puntos_venta = 0;
     int dev = 0;
     double t1 = 0, t2 = 0, t3 = 0, t4 = 0; 
@@ -34,6 +47,7 @@ public class Formulario extends javax.swing.JFrame {
     fomularioCode fc = new fomularioCode();
     private HashMap<String, String> codigoc;
             
+    
     public Formulario() {
         initComponents();
         textos();
@@ -137,8 +151,8 @@ public class Formulario extends javax.swing.JFrame {
     public void fecha(){
         Date fechas = new Date();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        total_inicialTXT.setText(df.format(fechas));
-        total_inicialTXT.setEditable(false);
+        fechaTXT.setText(df.format(fechas));
+        fechaTXT.setEditable(false);
     }
     
     public void pvTotal(){
@@ -888,35 +902,144 @@ public class Formulario extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_boton_salirActionPerformed
 
+    public List<String> clienteFiado() {
+        List<String> ids = new ArrayList<>();
+        for (int i = 0; i < fiado_table.getRowCount(); i++) {
+            String id = fiado_table.getValueAt(i, 0).toString();
+            ids.add(id);
+        }
+        return ids;
+    }
+    
+    public List<String> clienteSaldo() {
+        List<String> saldos = new ArrayList<>();
+        for (int i = 0; i < fiado_table.getRowCount(); i++) {
+            String id = fiado_table.getValueAt(i, 2).toString();
+            saldos.add(id);
+        }
+        return saldos;
+    }
+    
+    public List<String> clienteEstado() {
+        List<String> estado = new ArrayList<>();
+        for (int i = 0; i < fiado_table.getRowCount(); i++) {
+            String id = fiado_table.getValueAt(i, 3).toString();
+            estado.add(id);
+        }
+        return estado;
+    }
+    
+    public List<String> devolucionClientes() {
+        List<String> ids = new ArrayList<>();
+        for (int i = 0; i < devolucion_table.getRowCount(); i++) {
+            String id = devolucion_table.getValueAt(i, 0).toString();
+            ids.add(id);
+        }
+        return ids;
+    }
+        
+    public List<String> devolucionSaldos() {
+        List<String> saldos = new ArrayList<>();
+        for (int i = 0; i < devolucion_table.getRowCount(); i++) {
+            String id = devolucion_table.getValueAt(i, 2).toString();
+            saldos.add(id);
+        }
+        return saldos;
+    }
+    
+    public List<String> pDCantidad() {
+        List<String> cant = new ArrayList<>();
+        for (int i = 0; i < prd_table.getRowCount(); i++) {
+            String id = prd_table.getValueAt(i, 0).toString();
+            cant.add(id);
+        }
+        return cant;
+    }
+    
+    public List<String> pdNombres() {
+        List<String> cant = new ArrayList<>();
+        for (int i = 0; i < prd_table.getRowCount(); i++) {
+            String id = prd_table.getValueAt(i, 1).toString();
+            cant.add(id);
+        }
+        return cant;
+    }
+    
+    public List<String> pDPrecioUni() {
+        List<String> pre = new ArrayList<>();
+        for (int i = 0; i < prd_table.getRowCount(); i++) {
+            String id = prd_table.getValueAt(i, 2).toString();
+            pre.add(id);
+        }
+        return pre;
+    }
+    
+    public List<String> pdSaldos() {
+        List<String> pre = new ArrayList<>();
+        for (int i = 0; i < prd_table.getRowCount(); i++) {
+            String id = prd_table.getValueAt(i, 3).toString();
+            pre.add(id);
+        }
+        return pre;
+    }
+    
     private void boton_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_guardarActionPerformed
-        String zona = zonaTXT.getText();
-        String total_i = total_inicialTXT.getText();
-        String pv = pv_inicialTXT.getText();
-        String efectivoR = efectivoTXT.getText();
-        String transferenciaR = transferenciaTXT.getText();
-        String cobranzaR = cobranzaTXT.getText();
-        String gastosR = gastosTXT.getText();
-        if(zona.equals("")){
+        fechaF = fechaTXT.getText();
+        zonaF = zonaTXT.getText();
+        total_inicialF = total_inicialTXT.getText();
+        puntos_inicial = pv_inicialTXT.getText();
+        
+        clientesFiado = clienteFiado();
+        clientesSaldo = clienteSaldo();
+        clientesEstado = clienteEstado();
+        //fiado_totalF = saldo_fiadoTXT.getText();
+        
+        fiado_totalF = saldo_fiadoTXT.getText();
+        
+        rendicion_efectivoF = efectivoTXT.getText();
+        rendicion_transferenciaF = transferenciaTXT.getText();
+        cobranzaF = cobranzaTXT.getText();
+        gastosF = gastosTXT.getText();
+        rendicion_totalF = total_rTXT.getText();
+        
+        devolucionCliente = devolucionClientes();
+        devolucionSaldo = devolucionSaldos();
+        devolucion_totalF = devolucion_totalTXT.getText();
+        
+        pdCantidad = pDCantidad();
+        pdNombre = pdNombres();
+        pdPrecioUni = pDPrecioUni();
+        pdSaldo = pdSaldos();
+        pd_totalF = producto_devolucion_totalTXT.getText();
+        
+        total_realF = total_realTXT.getText();
+        puntos_venta_finalF = rendicion_pvTXT.getText();
+        tr_totalF = rendicion_totalTXT.getText();
+        devolucionF = diferenciaTXT.getText();
+        
+        if(zonaF.equals("")){
             JOptionPane.showMessageDialog(null, "No se definió la zona","Advertencia",JOptionPane.WARNING_MESSAGE);
         }
-        if(total_i.equals("")){
+        if(total_inicialF.equals("")){
             JOptionPane.showMessageDialog(null, "No se definió el total inicial","Advertencia",JOptionPane.WARNING_MESSAGE);
         }
-        if(pv.equals("")){
+        if(puntos_inicial.equals("")){
             JOptionPane.showMessageDialog(null, "No se definió los puntos de venta iniciales","Advertencia",JOptionPane.WARNING_MESSAGE);
         }
-        if(efectivoR.equals("")){
+        if(rendicion_efectivoF.equals("")){
             JOptionPane.showMessageDialog(null, "No se definió el efectivo de la rendición","Advertencia",JOptionPane.WARNING_MESSAGE);
         }
-        if(transferenciaR.equals("")){
+        if(rendicion_transferenciaF.equals("")){
             JOptionPane.showMessageDialog(null, "No se definió la transferencia de la rendición","Advertencia",JOptionPane.WARNING_MESSAGE);
         }
-        if(cobranzaR.equals("")){
+        if(cobranzaF.equals("")){
             JOptionPane.showMessageDialog(null, "No se definió las cobranzas de la rendición","Advertencia",JOptionPane.WARNING_MESSAGE);
         }
-        if(gastosR.equals("")){
+        if(gastosF.equals("")){
             JOptionPane.showMessageDialog(null, "No se definió los gastos de la rendición","Advertencia",JOptionPane.WARNING_MESSAGE);
         }
+        
+        fc.guardar(fechaF, zonaF, total_inicialF, puntos_inicial, clientesFiado, fiado_totalF,clientesSaldo, clientesEstado, rendicion_efectivoF, rendicion_transferenciaF, cobranzaF, gastosF, rendicion_totalF, devolucionCliente, devolucionSaldo, devolucion_totalF, pdCantidad, pdNombre, pdPrecioUni, pdSaldo, pd_totalF, total_realF, puntos_venta_finalF, tr_totalF, devolucionF);
     }//GEN-LAST:event_boton_guardarActionPerformed
 
     /**

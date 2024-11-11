@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-10-2024 a las 19:36:34
+-- Tiempo de generación: 11-11-2024 a las 18:53:10
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -46,6 +46,28 @@ INSERT INTO `cliente` (`id`, `codigo`, `nombre`, `borrado`) VALUES
 (5, '4322', 'JuanFra', 1),
 (6, '905', 'Palavecino', 0),
 (7, '100', 'Pepe', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `fiado`
+--
+
+CREATE TABLE `fiado` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `dni` varchar(11) NOT NULL,
+  `deuda` varchar(150) NOT NULL,
+  `pagos` varchar(150) NOT NULL DEFAULT '0',
+  `total` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `fiado`
+--
+
+INSERT INTO `fiado` (`id`, `nombre`, `dni`, `deuda`, `pagos`, `total`) VALUES
+(1, 'Calos', '44455789', '20000', '0', '20000');
 
 -- --------------------------------------------------------
 
@@ -108,27 +130,27 @@ CREATE TABLE `registro` (
   `zona` varchar(300) NOT NULL,
   `total_inicial` float NOT NULL,
   `puntos_venta_inicial` int(11) NOT NULL,
-  `clientes_fiado` int(11) NOT NULL,
-  `fiado_saldo` float NOT NULL,
-  `fiado_estado` int(11) NOT NULL,
-  `fiado_total` float NOT NULL,
+  `clientes_fiado` varchar(11) NOT NULL,
+  `fiado_saldo` varchar(12) NOT NULL,
+  `fiado_estado` varchar(11) NOT NULL,
+  `fiado_total` varchar(12) NOT NULL,
   `rendicion_efectivo` float NOT NULL,
   `rendicion_transferencia` float NOT NULL,
   `cobranza` double NOT NULL,
   `gastos` float NOT NULL,
-  `rendicion_total` float NOT NULL,
-  `devolucion_cliente` int(11) NOT NULL,
-  `devolucion_saldo` float NOT NULL,
-  `devolucion_total` float NOT NULL,
-  `pd_cantidad` int(11) NOT NULL,
+  `rendicion_total` varchar(12) NOT NULL,
+  `devolucion_cliente` varchar(11) NOT NULL,
+  `devolucion_saldo` varchar(12) NOT NULL,
+  `devolucion_total` varchar(12) NOT NULL,
+  `pd_cantidad` varchar(11) NOT NULL,
   `pd_nombre` varchar(200) NOT NULL,
-  `pd_precio_uni` float NOT NULL,
-  `pd_saldo` float NOT NULL,
-  `pd_total` float NOT NULL,
-  `total_real` float NOT NULL,
-  `tr_total` float NOT NULL,
+  `pd_precio_uni` varchar(12) NOT NULL,
+  `pd_saldo` varchar(12) NOT NULL,
+  `pd_total` varchar(12) NOT NULL,
+  `total_real` varchar(12) NOT NULL,
+  `tr_total` varchar(12) NOT NULL,
   `puntos_venta_final` int(11) NOT NULL,
-  `devolucion` float NOT NULL
+  `devolucion` varchar(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -136,10 +158,11 @@ CREATE TABLE `registro` (
 --
 
 INSERT INTO `registro` (`id`, `semana`, `fecha`, `zona`, `total_inicial`, `puntos_venta_inicial`, `clientes_fiado`, `fiado_saldo`, `fiado_estado`, `fiado_total`, `rendicion_efectivo`, `rendicion_transferencia`, `cobranza`, `gastos`, `rendicion_total`, `devolucion_cliente`, `devolucion_saldo`, `devolucion_total`, `pd_cantidad`, `pd_nombre`, `pd_precio_uni`, `pd_saldo`, `pd_total`, `total_real`, `tr_total`, `puntos_venta_final`, `devolucion`) VALUES
-(3, 'semana 1', '2024-10-01', 'san pedro ', 1000, 12, 12, 1000, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 'luis', 12, 12, 12, 12, 12, 12, 12),
-(4, 'semana 2', '2024-10-09', 'as', 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 21, 'as', 12, 12, 2, 12, 12, 12, 12),
-(5, 'semana 4 ', '2024-10-23', 'as', 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 'a', 12, 12, 12, 12, 12, 12, 12),
-(6, 'semana 1', '2024-10-10', 'ds', 12, 32, 34, 45, 45, 45, 54, 56, 65, 56, 53, 45, 345, 345, 435, 'sd', 345, 5435, 3453450, 535, 355, 35, 345);
+(3, 'semana 1', '2024-10-01', 'san pedro ', 1000, 12, '12', '1000', '12', '12', 12, 12, 12, 12, '12', '12', '12', '12', '12', 'luis', '12', '12', '12', '12', '12', 12, '12'),
+(4, 'semana 2', '2024-10-09', 'as', 12, 12, '12', '12', '12', '12', 12, 12, 12, 12, '12', '12', '12', '12', '21', 'as', '12', '12', '2', '12', '12', 12, '12'),
+(5, 'semana 4 ', '2024-10-23', 'as', 12, 12, '12', '12', '12', '12', 12, 12, 12, 12, '12', '12', '12', '12', '12', 'a', '12', '12', '12', '12', '12', 12, '12'),
+(6, 'semana 1', '2024-10-10', 'ds', 12, 32, '34', '45', '45', '45', 54, 56, 65, 56, '53', '45', '345', '345', '435', 'sd', '345', '5435', '3453450', '535', '355', 35, '345'),
+(7, 'semana 1', '2024-11-02', 'e', 1222, 21, '111,213', '12,12', 'd,d', '24,00', 120, 20, 10, 0, '130,00', '213', '120', '120,00', '12,3', 'v,f', '120,12', '1440,36', '1476,00', '-374,00', '154,00', 20, '528,00');
 
 -- --------------------------------------------------------
 
@@ -195,6 +218,12 @@ ALTER TABLE `cliente`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `fiado`
+--
+ALTER TABLE `fiado`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `mes`
 --
 ALTER TABLE `mes`
@@ -239,6 +268,12 @@ ALTER TABLE `cliente`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT de la tabla `fiado`
+--
+ALTER TABLE `fiado`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de la tabla `meses`
 --
 ALTER TABLE `meses`
@@ -248,7 +283,7 @@ ALTER TABLE `meses`
 -- AUTO_INCREMENT de la tabla `registro`
 --
 ALTER TABLE `registro`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `semanas`
