@@ -6,6 +6,7 @@ package Conexion;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
@@ -29,5 +30,9 @@ public class conexion {
             Logger.getLogger(conexionUrl);
         }
         return con;
+    }
+
+    public PreparedStatement prepareStatement(String select) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

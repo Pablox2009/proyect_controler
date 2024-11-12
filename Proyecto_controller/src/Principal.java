@@ -116,6 +116,7 @@ public void tabla() {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
@@ -237,6 +238,15 @@ public void tabla() {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Fiado");
+
+        jMenuItem5.setText("Cliente Fiado");
+        jMenuItem5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jMenuItem5KeyTyped(evt);
+            }
+        });
+        jMenu2.add(jMenuItem5);
+
         jMenuBar1.add(jMenu2);
 
         jMenu7.setText("Opciones ");
@@ -423,6 +433,14 @@ public void tabla() {
     // Llamar al método para llenar la tabla con los datos filtrados
     llenarTablaFiltrada(mesSeleccionado, semanaSeleccionada);
     }//GEN-LAST:event_jButton1ActionPerformed
+private void jMenuItem5ActionPerformed(java.awt.event.KeyEvent evt) {                                    
+        // TODO add your handling code here:
+        cliente_fiado a = new cliente_fiado();
+        a.setVisible(true);
+    }  
+    private void jMenuItem5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jMenuItem5KeyTyped
+       
+    }//GEN-LAST:event_jMenuItem5KeyTyped
 public void llenarTablaFiltrada(String mes, String semana) {
     // Definir las columnas de la tabla
     String[] columnNames = {"Semana", "Días", "Puntos de Venta", "Total Inicial"};
@@ -537,6 +555,7 @@ public void llenarTablaFiltrada(String mes, String semana) {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;

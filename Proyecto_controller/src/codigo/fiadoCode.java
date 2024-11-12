@@ -12,40 +12,55 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Usuario
- */
+
 public class fiadoCode {
     
     private String nombre, dni, deuda;
     private String id, pago, total;
     
-    public DefaultTableModel clientesFiados(){
-        String[] columnas = {"id","Nombre","DNI", "Deuda", "Monto", "Debe"};
-        String[] fiados = new String[6];
-        DefaultTableModel model = new DefaultTableModel(null,columnas);
-        String select = "SELECT * FROM fiados";
-        try{
-            Connection con = conexion.conectar();
-            PreparedStatement pr = con.prepareStatement(select);
-            ResultSet rs = pr.executeQuery();
-            while(rs.next()){
-                fiados[0] = rs.getString("id");
-                fiados[1] = rs.getString("nombre");
-                fiados[2] = rs.getString("dni");
-                fiados[3] = rs.getString("deuda");
-                fiados[4] = rs.getString("pagos");
-                fiados[5] = rs.getString("total");
-                model.addRow(fiados);
-            }
-        }
-        catch(SQLException e){
-            JOptionPane.showMessageDialog(null, "Error de conexión");
+    public DefaultTableModel clientesFiados() {
+    String[] columnas = {"id", "Nombre", "DNI", "Deuda", "Monto", "Debe"};
+    String[] fiados = new String[6];
+    DefaultTableModel model = new DefaultTableModel(null, columnas);
+    String select = "SELECT * FROM fiado";
+    
+    Connection con = null;
+    PreparedStatement pr = null;
+    ResultSet rs = null;
+
+    try {
+        con = conexion.conectar();
+        if (con == null) {
+            JOptionPane.showMessageDialog(null, "Error en la conexión a la base de datos");
+            return model;
         }
         
-        return model;
+        pr = con.prepareStatement(select);
+        rs = pr.executeQuery();
+
+        while (rs.next()) {
+            fiados[0] = rs.getString("id");
+            fiados[1] = rs.getString("nombre");
+            fiados[2] = rs.getString("dni");
+            fiados[3] = rs.getString("deuda");
+            fiados[4] = rs.getString("pagos");
+            fiados[5] = rs.getString("total");
+            model.addRow(fiados);
+        }
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Error en la consulta: " + e.getMessage());
+    } finally {
+        try {
+            if (rs != null) rs.close();
+            if (pr != null) pr.close();
+            if (con != null) con.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión");
+        }
     }
+    return model;
+}
+
     
     public void guardar(String n, String d, String de){
         this.nombre = n;

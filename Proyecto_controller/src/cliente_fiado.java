@@ -4,19 +4,13 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
-/**
- *
- * @author Usuario
- */
 public class cliente_fiado extends javax.swing.JFrame {
 
     private fiadoCode fc;
@@ -24,13 +18,27 @@ public class cliente_fiado extends javax.swing.JFrame {
     
     public cliente_fiado() {
         initComponents();
+        fc= new fiadoCode();
         centrar();
-        fiados();
+        try {
+            fiados();
+        } catch (SQLException ex) {
+            Logger.getLogger(cliente_fiado.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
-    public void fiados(){
+    public void fiados() throws SQLException{
+        
+        if(fc !=null){  
         DefaultTableModel model = fc.clientesFiados();
+        if(model.getRowCount()>0){
+            System.out.println("exito");
+        }else{
+            System.out.println("error");
+        }
+        
         tabla_fiados.setModel(model);
+        
         tabla_fiados.addMouseListener(new MouseAdapter(){
             @Override
             public void mouseClicked(MouseEvent e){
@@ -52,6 +60,9 @@ public class cliente_fiado extends javax.swing.JFrame {
                 }
             }
         });
+    }else{
+           System.out.println("nulo"); 
+        }
     }
 
     private void centrar(){
@@ -99,6 +110,11 @@ public class cliente_fiado extends javax.swing.JFrame {
         eliminar.setText("Eliminar un cliente");
 
         modificar.setText("Modificar datos");
+        modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         jLabel1.setText("Fiados");
@@ -127,7 +143,7 @@ public class cliente_fiado extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(9, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -144,6 +160,10 @@ public class cliente_fiado extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_modificarActionPerformed
 
     /**
      * @param args the command line arguments
