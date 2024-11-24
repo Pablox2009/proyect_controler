@@ -850,7 +850,7 @@ public class Formulario extends javax.swing.JFrame {
         }
         else{
             efectivo = Double.parseDouble(efect);
-            result = efectivo+transferencia-gastos-cobranza;
+            result = efectivo+transferencia+gastos-cobranza;
             total_rTXT.setText(String.format("%.2f",(result)));
         }
         totalRendicion();
@@ -864,7 +864,7 @@ public class Formulario extends javax.swing.JFrame {
         }
         else{
             transferencia = Double.parseDouble(trans);
-            result = efectivo+transferencia-gastos-cobranza;
+            result = efectivo+transferencia+gastos-cobranza;
             total_rTXT.setText(String.format("%.2f",(result)));
         }
         totalRendicion();
@@ -878,7 +878,7 @@ public class Formulario extends javax.swing.JFrame {
         }
         else{
             cobranza = Double.parseDouble(cobr);
-            result = efectivo+transferencia-gastos-cobranza;
+            result = efectivo+transferencia+gastos-cobranza;
             total_rTXT.setText(String.format("%.2f",(result)));
         }
         totalRendicion();
@@ -892,7 +892,7 @@ public class Formulario extends javax.swing.JFrame {
         }
         else{
             gastos = Double.parseDouble(gast);
-            result = efectivo+transferencia-gastos-cobranza;
+            result = efectivo+transferencia+gastos-cobranza;
             total_rTXT.setText(String.format("%.2f",(result)));
         }
         totalRendicion();

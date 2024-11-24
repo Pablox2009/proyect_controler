@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-11-2024 a las 18:53:10
+-- Tiempo de generación: 24-11-2024 a las 15:23:32
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -58,7 +58,10 @@ CREATE TABLE `fiado` (
   `nombre` varchar(100) NOT NULL,
   `dni` varchar(11) NOT NULL,
   `deuda` varchar(150) NOT NULL,
-  `pagos` varchar(150) NOT NULL DEFAULT '0',
+  `s1` varchar(150) NOT NULL DEFAULT '0',
+  `s2` varchar(150) NOT NULL DEFAULT '0',
+  `s3` varchar(150) NOT NULL DEFAULT '0',
+  `s4` varchar(150) NOT NULL DEFAULT '0',
   `total` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -66,8 +69,8 @@ CREATE TABLE `fiado` (
 -- Volcado de datos para la tabla `fiado`
 --
 
-INSERT INTO `fiado` (`id`, `nombre`, `dni`, `deuda`, `pagos`, `total`) VALUES
-(1, 'Calos', '44455789', '20000', '0', '20000');
+INSERT INTO `fiado` (`id`, `nombre`, `dni`, `deuda`, `s1`, `s2`, `s3`, `s4`, `total`) VALUES
+(1, 'Calos', '44455789', '100000', '20000', '30000', '10000', '40000', '0.0');
 
 -- --------------------------------------------------------
 
@@ -130,7 +133,7 @@ CREATE TABLE `registro` (
   `zona` varchar(300) NOT NULL,
   `total_inicial` float NOT NULL,
   `puntos_venta_inicial` int(11) NOT NULL,
-  `clientes_fiado` varchar(11) NOT NULL,
+  `clientes_fiado` varchar(1000) NOT NULL,
   `fiado_saldo` varchar(12) NOT NULL,
   `fiado_estado` varchar(11) NOT NULL,
   `fiado_total` varchar(12) NOT NULL,

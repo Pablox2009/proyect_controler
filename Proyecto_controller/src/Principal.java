@@ -22,9 +22,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Principal extends javax.swing.JFrame {
 
-    //private Cliente_formulario cf;
-      conexion con = new conexion();
-     Connection conect;
+    conexion con = new conexion();
+    Connection conect;
     int cambio;
     Rellenar a = new Rellenar();
     public Principal() {
@@ -165,6 +164,7 @@ public void sumar_datos(){
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
         item_agregar_cliente = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
 
         jMenu3.setText("File");
         jMenuBar2.add(jMenu3);
@@ -319,6 +319,14 @@ public void sumar_datos(){
         });
         jMenu8.add(item_agregar_cliente);
 
+        jMenuItem6.setText("Fiados");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu8.add(jMenuItem6);
+
         jMenuBar1.add(jMenu8);
 
         setJMenuBar(jMenuBar1);
@@ -441,8 +449,6 @@ public void sumar_datos(){
         // TODO add your handling code here:
         // Mostrar el cuadro de diálogo con dos opciones
     int respuesta = JOptionPane.showConfirmDialog(null, "Está por ingresar un nuevo mes. ¿Desea continuar?", "Advertencia", JOptionPane.YES_NO_OPTION);
-    
-    // Si el usuario elige "Sí" (YES_OPTION), continúa con la acción
     if (respuesta == JOptionPane.YES_OPTION) {
         mes a = new mes();
         a.setVisible(true);
@@ -483,6 +489,11 @@ private void jMenuItem5ActionPerformed(java.awt.event.KeyEvent evt) {
     private void jMenuItem5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jMenuItem5KeyTyped
        
     }//GEN-LAST:event_jMenuItem5KeyTyped
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        cliente_fiado cf = new cliente_fiado();
+        cf.setVisible(true);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
 public void llenarTablaFiltrada(String mes, String semana) {
     // Definir las columnas de la tabla
     String[] columnNames = {"Semana", "Días", "Puntos de Venta", "Total Inicial"};
@@ -600,6 +611,7 @@ public void llenarTablaFiltrada(String mes, String semana) {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
