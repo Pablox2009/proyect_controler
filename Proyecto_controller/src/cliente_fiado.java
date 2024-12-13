@@ -7,6 +7,7 @@ import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
@@ -14,29 +15,17 @@ import javax.swing.table.DefaultTableModel;
 public class cliente_fiado extends javax.swing.JFrame {
 
     private fiadoCode fc;
-    private String id, deuda, total, pago;
+    private String id, deuda, total, s1="0", s2="0", s3="0", s4="0";
     
     public cliente_fiado() {
         initComponents();
         fc= new fiadoCode();
         centrar();
-        try {
-            fiados();
-        } catch (SQLException ex) {
-            Logger.getLogger(cliente_fiado.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        fiados();
     }
     
-    public void fiados() throws SQLException{
-        
-        if(fc !=null){  
+    public void fiados(){ 
         DefaultTableModel model = fc.clientesFiados();
-        if(model.getRowCount()>0){
-            System.out.println("exito");
-        }else{
-            System.out.println("error");
-        }
-        
         tabla_fiados.setModel(model);
         
         tabla_fiados.addMouseListener(new MouseAdapter(){
@@ -56,13 +45,27 @@ public class cliente_fiado extends javax.swing.JFrame {
                 int row = e.getFirstRow();
                 int column = e.getColumn();
                 if (column == 4) {
-                    pago = model.getValueAt(row, 4).toString();
+                    s1 = model.getValueAt(row, 4).toString();
+                    actualizarS1();
+                    fiados();
+                }
+                if (column == 5) {
+                    s2 = model.getValueAt(row, 5).toString();
+                    actualizarS2();
+                    fiados();
+                }
+                if (column == 6) {
+                    s3 = model.getValueAt(row, 6).toString();
+                    actualizarS3();
+                    fiados();
+                }
+                if (column == 7) {
+                    s4 = model.getValueAt(row, 7).toString();
+                    actualizarS4();
+                    fiados();
                 }
             }
         });
-    }else{
-           System.out.println("nulo"); 
-        }
     }
 
     private void centrar(){
@@ -72,12 +75,53 @@ public class cliente_fiado extends javax.swing.JFrame {
         this.setLocation(x, y);
     }
     
-    public void actualizar(){
+    public void actualizarS1(){
         double deudaNumerica = Double.parseDouble(deuda);
-        double pagoNumerico = Double.parseDouble(pago);
-        double totalNumerico = deudaNumerica - pagoNumerico;
+        double pagoNumerico1 = Double.parseDouble(s1);
+        double pagoNumerico2 = Double.parseDouble(s2);
+        double pagoNumerico3 = Double.parseDouble(s3);
+        double pagoNumerico4 = Double.parseDouble(s4);
+        double totalNumerico = deudaNumerica - (pagoNumerico1 + pagoNumerico2 + pagoNumerico3 + pagoNumerico4);
         total = String.valueOf(totalNumerico);
-        fc.modificarMonto(id, pago, total);
+        fc.modificarS1(id, s1, total);
+        //s1="0"; s2="0"; s3="0";s4="0";
+    }
+    
+    public void actualizarS2(){
+        double deudaNumerica = Double.parseDouble(deuda);
+        double pagoNumerico1 = Double.parseDouble(s1);
+        double pagoNumerico2 = Double.parseDouble(s2);
+        double pagoNumerico3 = Double.parseDouble(s3);
+        double pagoNumerico4 = Double.parseDouble(s4);
+        double totalNumerico = deudaNumerica - (pagoNumerico1 + pagoNumerico2 + pagoNumerico3 + pagoNumerico4);
+        total = String.valueOf(totalNumerico);
+        JOptionPane.showMessageDialog(null, "id:" + id + "semana2: "+ s2 + "total" +total);
+        fc.modificarS2(id, s2, total);
+        //s1="0"; s2="0"; s3="0";s4="0";
+    }
+    
+    public void actualizarS3(){
+        double deudaNumerica = Double.parseDouble(deuda);
+        double pagoNumerico1 = Double.parseDouble(s1);
+        double pagoNumerico2 = Double.parseDouble(s2);
+        double pagoNumerico3 = Double.parseDouble(s3);
+        double pagoNumerico4 = Double.parseDouble(s4);
+        double totalNumerico = deudaNumerica - (pagoNumerico1 + pagoNumerico2 + pagoNumerico3 + pagoNumerico4);
+        total = String.valueOf(totalNumerico);
+        fc.modificarS3(id, s3, total);
+        //s1="0"; s2="0"; s3="0";s4="0";
+    }
+    
+    public void actualizarS4(){
+        double deudaNumerica = Double.parseDouble(deuda);
+        double pagoNumerico1 = Double.parseDouble(s1);
+        double pagoNumerico2 = Double.parseDouble(s2);
+        double pagoNumerico3 = Double.parseDouble(s3);
+        double pagoNumerico4 = Double.parseDouble(s4);
+        double totalNumerico = deudaNumerica - (pagoNumerico1 + pagoNumerico2 + pagoNumerico3 + pagoNumerico4);
+        total = String.valueOf(totalNumerico);
+        fc.modificarS4(id, s4, total);
+        //s1="0"; s2="0"; s3="0";s4="0";
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -125,18 +169,15 @@ public class cliente_fiado extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(eliminar)
-                            .addComponent(agregar)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(eliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(agregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(modificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(422, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(270, 270, 270))
         );
@@ -149,11 +190,11 @@ public class cliente_fiado extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
             .addGroup(layout.createSequentialGroup()
-                .addGap(125, 125, 125)
+                .addGap(131, 131, 131)
                 .addComponent(agregar)
-                .addGap(33, 33, 33)
+                .addGap(31, 31, 31)
                 .addComponent(eliminar)
-                .addGap(33, 33, 33)
+                .addGap(29, 29, 29)
                 .addComponent(modificar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );

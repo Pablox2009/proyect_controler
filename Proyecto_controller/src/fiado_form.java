@@ -1,5 +1,7 @@
 
 import codigo.fiadoCode;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
 /*
@@ -17,6 +19,14 @@ public class fiado_form extends javax.swing.JFrame {
     private fiadoCode fc;
     public fiado_form() {
         initComponents();
+        centrar();
+    }
+    
+    private void centrar(){
+        Dimension tamaño = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (tamaño.width - this.getWidth()) / 2;
+        int y = (tamaño.height - this.getHeight()) / 2;
+        this.setLocation(x, y);
     }
 
     /**
