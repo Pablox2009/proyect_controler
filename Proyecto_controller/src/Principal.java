@@ -28,7 +28,7 @@ public class Principal extends javax.swing.JFrame {
     Rellenar a = new Rellenar();
     public Principal() {
         initComponents();
-        Objetivo.setEditable(false);
+        as.setEditable(false);
         this.conect = con.conectar();
         a.rellenar("mes","mes", mes);
         a.rellenar("semana","semana", semana);
@@ -142,9 +142,9 @@ public void sumar_datos(){
         dias = new javax.swing.JTextField();
         venta = new javax.swing.JTextField();
         total = new javax.swing.JTextField();
-        Objetivo = new javax.swing.JTextField();
+        as = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        Objetivo = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         mes = new javax.swing.JComboBox<>();
         semana = new javax.swing.JComboBox<>();
@@ -214,9 +214,9 @@ public void sumar_datos(){
             }
         });
 
-        Objetivo.addActionListener(new java.awt.event.ActionListener() {
+        as.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ObjetivoActionPerformed(evt);
+                asActionPerformed(evt);
             }
         });
 
@@ -226,9 +226,9 @@ public void sumar_datos(){
             }
         });
 
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        Objetivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                ObjetivoActionPerformed(evt);
             }
         });
 
@@ -346,7 +346,7 @@ public void sumar_datos(){
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(Objetivo)
+                            .addComponent(as)
                             .addComponent(venta, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(64, 64, 64)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -354,7 +354,7 @@ public void sumar_datos(){
                             .addComponent(jTextField5))
                         .addGap(59, 59, 59)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                            .addComponent(Objetivo, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
                             .addComponent(total))
                         .addGap(26, 26, 26)))
                 .addContainerGap(61, Short.MAX_VALUE))
@@ -394,9 +394,9 @@ public void sumar_datos(){
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(Objetivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(as, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Objetivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(57, Short.MAX_VALUE))
         );
 
@@ -415,17 +415,17 @@ public void sumar_datos(){
         // TODO add your handling code here:
     }//GEN-LAST:event_totalActionPerformed
 
-    private void ObjetivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ObjetivoActionPerformed
+    private void asActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asActionPerformed
        
-    }//GEN-LAST:event_ObjetivoActionPerformed
+    }//GEN-LAST:event_asActionPerformed
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField5ActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void ObjetivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ObjetivoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_ObjetivoActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         int res = JOptionPane.showConfirmDialog(null,"Esta por ingresar un nuevo dia. ¿Desea continuar?","Advertencia", JOptionPane.YES_NO_OPTION);
@@ -587,6 +587,7 @@ public void llenarTablaFiltrada(String mes, String semana) {
     private javax.swing.JTable Datos;
     private javax.swing.JMenuItem Mes;
     private javax.swing.JTextField Objetivo;
+    private javax.swing.JTextField as;
     private javax.swing.JTextField dias;
     private javax.swing.JMenuItem item_agregar_cliente;
     private javax.swing.JButton jButton1;
@@ -614,7 +615,6 @@ public void llenarTablaFiltrada(String mes, String semana) {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JComboBox<String> mes;
     private javax.swing.JComboBox<String> semana;
     private javax.swing.JTextField total;
